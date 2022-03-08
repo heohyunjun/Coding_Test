@@ -1,7 +1,8 @@
 # 노드 개수, 간선 개수 입력 받기
 n, m = map(int, input().split())
 
-
+# 10억 = 무한 = 1e9
+INF = int(1e9)
 # 시작 노드
 start = int(input())
 
@@ -27,7 +28,25 @@ def get_smallest_node():
     return index
 
 def dijkstra(start):
-    distance[start] = True
+    distance[start] = 0
     visited[start] = True
-    for j
-    ## # #
+    for j in graph[start]:
+        distance[j[0]] = j[i]
+    for i in range(n - 1):
+        now = get_smallest_node()
+        visited[now] = True
+
+        for j in graph[now]:
+            cost = distance[now] + j[1]
+            if cost < distance[j[0]]:
+
+                distance[j[0]] = cost
+# 다익스트라 실행
+dijkstra(start)
+
+for i in range(1, n + 1):
+    if distance[i] == INF:
+        print("INF")
+    else:
+        print(distance[i])
+
