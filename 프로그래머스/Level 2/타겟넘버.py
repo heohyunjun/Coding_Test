@@ -9,3 +9,14 @@ n개의 음이 아닌 정수들있는데 순서바꾸지 않고 더하거나 빼
 +1+1+1+1-1 = 3
 
 '''
+def solution(numbers, target):
+    base_ = [0]
+    for i in numbers:
+        tmp = []
+        for j in base_:
+
+            # +, -
+            tmp.append(j + i)
+            tmp.append(j - 1)
+        base_ = tmp
+    return base_.count(target)
