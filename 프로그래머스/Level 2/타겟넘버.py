@@ -20,3 +20,6 @@ def solution(numbers, target):
             tmp.append(j - 1)
         base_ = tmp
     return base_.count(target)
+
+# dfs로도 풀어보기
+from collections import deque
