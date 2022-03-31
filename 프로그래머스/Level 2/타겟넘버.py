@@ -22,4 +22,11 @@ def solution(numbers, target):
     return base_.count(target)
 
 # dfs로도 풀어보기
+# 각 노드에 인덱스를 부여해서 더하기
 from collections import deque
+
+def solution(numbers, target):
+    n = len(numbers)
+    answer = 0
+    def dfs(idx, result):
+        pass
