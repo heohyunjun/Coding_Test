@@ -8,3 +8,15 @@ clothes의 각행은 [의상 이름, 의상종류]로 이루어짐
 같은 이름 의상 없음
 clothes 모든 원소는 문자열
 '''
+from collections import defaultdict
+def solution(clothes):
+    answer = 1
+    dict_ = defaultdict()
+    for clothe, type_ in clothes:
+        dict_[type_] = dict_.get(type_, 0) + 1
+
+    for type_ in dict_:
+        answer *= (dict_[type_] + 1)
+
+    return answer - 1
+
