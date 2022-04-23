@@ -5,3 +5,28 @@
 가능한 스킬트리 개수를 return하는 solution 함수 작성
 
 '''
+# 방식 1
+def solution(skill, skill_trees):
+    answer = 0
+    for s_tree in skill_trees:
+        skill_list = list(skill)
+        for s in s_tree:
+            if s in skill:
+                if s != skill_list.pop(0):
+                    break
+        else:
+            answer += 1
+    return answer
+
+
+# 방식 2
+def solution(skill,skill_tree):
+    answer=0
+    for i in skill_tree:
+        skillist=''
+        for z in i:
+            if z in skill:
+                skillist+=z
+        if skillist==skill[0:len(skillist)]:
+            answer+=1
+    return answer
