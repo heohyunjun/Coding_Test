@@ -24,3 +24,18 @@ record는 다음과 같은 문자열이 담긴 배열이며 , 1 이상 10만 이
 4. 변경시 "Change [유저 아이디][닉네임]
 
 """
+from collections import defaultdict
+def solution(record):
+    dict_ = defaultdict()
+    answer = []
+    for i in record:
+        info, id, *nick = i.split()
+        if info in {"Enter", "Change"}:
+            dict_[id] = nick[0]
+    for i in record:
+        info, id, *nick = i.split()
+        if info == 'Enter':
+            answer.append(f"{dict_[id]}님이 들어왔습니다.")
+        if info == 'Leave':
+            answer.append(f"{dict_[id]}님이 나갔습니다.")
+    return answer
