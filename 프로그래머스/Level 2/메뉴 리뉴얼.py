@@ -9,3 +9,20 @@ orders 배열 크기는 2이상 20이하, 배열 각 원소는 2 이상 10이하
 정답은 오름차순으로 정렬
 
 '''
+from itertools import combinations
+from collections import Counter
+def solution(orders, course):
+    answer = []
+    for c in course:
+        tmp = []
+        for o in orders:
+            cb = combinations(sorted(o), c)
+            tmp+=cb
+        dict_ = Counter(tmp)
+        if dict_:
+            max_ = max(dict_.values())
+            if max_ > 1:
+                for k, v in dict_.items():
+                    if v == max_:
+                        answer.append("".join(k))
+    return sorted(answer)
