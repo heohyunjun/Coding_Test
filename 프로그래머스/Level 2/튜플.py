@@ -14,3 +14,9 @@
 는 모두 같은 튜플 (2, 1, 3, 4)를 나타냄
 s가 표현하는 튜플을 배열에 담아 return
 '''
+import re
+from collections import Counter
+
+def solution(s):
+    s = Counter(re.findall('\d+', s))
+    return list(map(int, [k for k, v in sorted(s.items(), key=lambda x: x[1], reverse=True)]))
