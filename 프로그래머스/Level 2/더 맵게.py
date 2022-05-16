@@ -9,3 +9,20 @@ Leo는 모든 음식의 스코빌 지수가 K 이상이 될 때까지 반복하�
 Leo가 가진 음식의 스코빌 지수를 담은 배열 scoville과 원하는 스코빌 지수 K가 주어질 때,
 모든 음식의 스코빌 지수를 K 이상으로 만들기 위해 섞어야 하는 최소 횟수를 return
 '''
+scoville = [1, 2, 3, 9, 10, 12]
+
+import heapq
+def calc(x :list):
+    pop_1 = heapq.heappop(x)
+    pop_2 = heapq.heappop(x)
+    value = pop_1 + pop_2 * 2
+    heapq.heappush(x, value)
+    return x
+
+def solution(scoville, K):
+    answer = 0
+    heapq.heapify(scoville)
+    while scoville[0] < K and len(scoville) >1:
+        scoville = calc(scoville)
+        answer+=1
+    return answer if scoville[0]>K else -1
