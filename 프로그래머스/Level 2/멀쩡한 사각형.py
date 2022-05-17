@@ -6,3 +6,7 @@
 근데 이 종이를 대각선 꼭지점 2개를 잇는 방향으로 잘랐을 경우
 안잘린 정사각형 개수
 '''
+
+import math
+def solution(w, h):
+    return w*h - (w+h -math.gcd(w,h))
