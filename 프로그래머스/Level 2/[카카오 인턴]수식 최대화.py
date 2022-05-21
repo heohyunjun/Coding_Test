@@ -5,3 +5,8 @@
  +,* > - 또는 * > +,-처럼 2개 이상의 연산자가 동일한 순위를 가지도록 연산자 우선순위를 정의할 수는 없음
 참가자에게 주어진 연산 수식이 담긴 문자열 expression이 매개변수로 주어질 때, 우승 시 받을 수 있는 가장 큰 상금 금액을 return
 '''
+
+def solution(expression):
+    answer = 0
+    operations = list(permutations(['*', '+', '-'], 3))
+    return answer
