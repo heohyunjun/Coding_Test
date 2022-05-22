@@ -10,3 +10,9 @@ def solution(expression):
     answer = 0
     operations = list(permutations(['*', '+', '-'], 3))
     return answer
+
+def calc(op, seq, exp):
+    if exp.isdigit():  # 더이상 exp에 연산자가 없으면
+        return str(exp)  # 그대로 리턴
+    else:
+        pass
