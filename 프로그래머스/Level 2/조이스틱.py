@@ -10,3 +10,9 @@
 - 마지막 위치에서 조이스틱을 아래로 1번 조작하여 Z를 완성합니다.
 따라서 11번 이동시켜 "JAZ"를 만들 수 있고, 이때가 최소 이동입니다.
 '''
+name = "JEROEN"
+answer = 0
+min_move = len(name) - 1
+for i, char in enumerate(name):
+    # 해당 알파벳 변경 최솟값 추가
+    answer += min(ord(char) - ord('A'), ord('Z') - ord(char) + 1)
