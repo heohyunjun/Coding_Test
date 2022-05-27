@@ -10,8 +10,6 @@ ex)
 # 동적프로그래밍으로 풀어야할것같긴함
 #
 '''
-
-
 def solution(board):
     n = len(board)
     m = len(board[0])
@@ -35,3 +33,9 @@ def solution(board):
         answer = max(answer, temp)
 
     return answer ** 2
+
+def solution(board):
+    answer = 0
+    if len(board) < 2 and 1 in sum(board, []):
+        return 1
+
