@@ -34,8 +34,18 @@ def solution(board):
 
     return answer ** 2
 
+
 def solution(board):
+    n = len(board)
+    m = len(board[0])
+
+    for i in range(1, n):
+        for j in range(1, m):
+            if board[i][j] == 1:
+                board[i][j] = min(board[i][j-1], board[i-1][j], board[i-1][j-1]) +1
+
     answer = 0
-    if len(board) < 2 and 1 in sum(board, []):
-        return 1
+    for max_ in board:
+        answer = max(max(max_), answer)
+    return answer ** 2
 
