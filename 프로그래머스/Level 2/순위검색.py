@@ -11,3 +11,10 @@
 개발팀이 궁금해하는 문의조건이 문자열 형태로 담긴 배열 query가 매개변수로 주어질 때,
 각 문의조건에 해당하는 사람들의 숫자를 순서대로 배열에 담아 return
 '''
+
+from collections import defaultdict
+def solution(info, query):
+    global answer
+    answer = []
+    dict = defaultdict(list)
+    return dict
