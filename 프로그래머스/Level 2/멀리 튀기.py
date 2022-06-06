@@ -11,3 +11,13 @@
 효진이가 끝에 도달하는 방법이 몇 가지인지 알아내, 여기에 1234567를 나눈 나머지를 리턴
 예를 들어 4가 입력된다면, 5를 return
 '''
+
+def solution(n):
+    if n < 2:
+        return n
+    dp = [0] * n
+    dp[0], dp[1] = 1, 2
+    for i in range(2, n):
+        dp[i] = dp[i-1] + dp[i-2]
+
+    return dp[-1] %1234567
