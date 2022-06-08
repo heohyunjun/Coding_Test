@@ -34,3 +34,9 @@ def solution(info, query):
     answer = []
     dict = defaultdict(list)
     return dict
+
+info = ["java backend junior pizza 150","python frontend senior chicken 210","python frontend senior chicken 150","cpp backend senior pizza 260","java backend junior chicken 80","python backend senior chicken 50"]
+for i in range(len(info)):
+    infol = info[i].split()  # info안의 문자열을 공백을 기준으로 분리
+    mykey = infol[:-1]  # info의 점수제외부분을 key로 분류
+    myval = infol[-1]  # info의 점수부분을 value로 분류
