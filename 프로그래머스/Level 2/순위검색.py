@@ -27,7 +27,8 @@
 이때, 배열에 X가 없을 수도 있으므로, 배열에서 X보다 크거나 같은 숫자가 처음 나타나는 위치를 찾아야 하며,
 이는 lower bound를 이용하면 됩
 '''
-
+from itertools import combinations
+from bisect import bisect_left
 from collections import defaultdict
 def solution(info, query):
     global answer
@@ -35,8 +36,18 @@ def solution(info, query):
     dict = defaultdict(list)
     return dict
 
+
+info_dict = {}
 info = ["java backend junior pizza 150","python frontend senior chicken 210","python frontend senior chicken 150","cpp backend senior pizza 260","java backend junior chicken 80","python backend senior chicken 50"]
 for i in range(len(info)):
     infol = info[i].split()  # info안의 문자열을 공백을 기준으로 분리
     mykey = infol[:-1]  # info의 점수제외부분을 key로 분류
     myval = infol[-1]  # info의 점수부분을 value로 분류
+
+    for j in range(5):  # key들로 만들 수 있는 모든 조합 생성
+        for c in combinations(mykey, j):
+            tmp = ''.join(c)
+            if tmp in info_dict:
+                info_dict[tmp].append(int(myval))  # 그 조합의 key값에 점수 추가
+            else:
+                info_dict[tmp] = [int(myval)]
