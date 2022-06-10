@@ -38,6 +38,7 @@ def solution(info, query):
 
 
 info_dict = {}
+query = ["java and backend and junior and pizza 100","python and frontend and senior and chicken 200","cpp and - and senior and pizza 250","- and backend and senior and - 150","- and - and - and chicken 100","- and - and - and - 150"]
 info = ["java backend junior pizza 150","python frontend senior chicken 210","python frontend senior chicken 150","cpp backend senior pizza 260","java backend junior chicken 80","python backend senior chicken 50"]
 for i in range(len(info)):
     infol = info[i].split()  # info안의 문자열을 공백을 기준으로 분리
@@ -51,3 +52,10 @@ for i in range(len(info)):
                 info_dict[tmp].append(int(myval))  # 그 조합의 key값에 점수 추가
             else:
                 info_dict[tmp] = [int(myval)]
+for k in info_dict:
+    info_dict[k].sort()  # dict안의 조합들을 점수순으로 정렬
+
+for qu in query:  # query도 마찬가지로 key와 value로 분리
+    myqu = qu.split(' ')
+    qu_key = myqu[:-1]
+    qu_val = myqu[-1]
