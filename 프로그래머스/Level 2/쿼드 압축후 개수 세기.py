@@ -9,3 +9,6 @@
 arr이 매개변수로 주어집니다. 위와 같은 방식으로 arr을 압축했을 때,
 배열에 최종적으로 남는 0의 개수와 1의 개수를 배열에 담아서 return
 '''
+def solution(arr):
+    answer = []
+    return answer
