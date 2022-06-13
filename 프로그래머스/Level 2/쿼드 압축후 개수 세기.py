@@ -10,5 +10,20 @@ arr이 매개변수로 주어집니다. 위와 같은 방식으로 arr을 압축
 배열에 최종적으로 남는 0의 개수와 1의 개수를 배열에 담아서 return
 '''
 def solution(arr):
-    answer = []
+    answer = [0, 0]
+    N = len(arr)
+
+    def comp(x, y, n):
+        init = arr[x][y]
+        for i in range(x, x + n):
+            for j in range(y, y + n):
+                if arr[i][j] != init:
+                    nn = n // 2
+                    comp(x, y, nn)
+                    comp(x, y + nn, nn)
+                    comp(x + nn, y, nn)
+                    comp(x + nn, y + nn, nn)
+                    return
+        answer[init] += 1
+    comp(0, 0, N)
     return answer
