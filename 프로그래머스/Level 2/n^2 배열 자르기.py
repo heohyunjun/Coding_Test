@@ -8,3 +8,9 @@ i = 1, 2, 3, ..., n에 대해서, 다음 과정을 반복합니다.
 새로운 1차원 배열을 arr이라 할 때, arr[left], arr[left+1], ..., arr[right]만 남기고 나머지는 지웁니다.
 정수 n, left, right가 매개변수로 주어집니다. 주어진 과정대로 만들어진 1차원 배열을 return
 '''
+
+def solution(n, left, right):
+    answer = []
+    for i in range(left, right + 1):
+        answer.append(max(i//n, i % n)+1)
+    return answer
