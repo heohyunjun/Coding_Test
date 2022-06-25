@@ -30,7 +30,3 @@ def dijkstra(arr, visited):
             if visited[nnode] > temp:
                 visited[nnode] = temp
                 heapq.heappush(q, (temp, nnode))
-
-
-def solution2():
-    return None
