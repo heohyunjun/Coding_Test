@@ -7,3 +7,15 @@
 타일을 세로로 배치 하는 경우
 직사각형의 가로의 길이 n이 매개변수로 주어질 때, 이 직사각형을 채우는 방법의 수를 return
 '''
+
+def solution(n):
+    answer = [0, 3, 11]
+    idx = int(n/2)
+    if n%2 !=0:
+        return 0
+    if idx<3:
+        return answer[idx]
+
+    for x in range(3, idx+1):
+        answer.append((answer[x-1] * 3 + sum(answer[1: x-1]) * 2 +2)%1000000007)
+    return answer[idx]
