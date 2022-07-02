@@ -12,3 +12,17 @@
 1번 기둥에 있는 원판의 개수 n이 매개변수로 주어질 때,
 n개의 원판을 3번 원판으로 최소로 옮기는 방법을 return
 '''
+def solution(n):
+    answer = []
+
+    def path(n, s, g):
+        answer.append([s,g])
+    def h(n, s, g, a):
+        if n==1:
+            path(n, s, g)
+        else:
+            h(n-1, s, a, g)
+            path(n, s, g)
+            h(n-1, a, g, s)
+    h(n, 1,3,2)
+    return answer
