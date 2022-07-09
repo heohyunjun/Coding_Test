@@ -8,3 +8,20 @@
 
 어피치에게 시달리는 제이지를 도와, DB 캐시를 적용할 때 캐시 크기에 따른 실행시간 측정 프로그램을 작성
 '''
+
+from collections import deque
+def solution(cacheSize, cities):
+    if cacheSize == 0:
+        return len(cities) * 5
+    answer = 0
+    cache_buffer = deque(maxlen=cacheSize)
+
+    for i in cities:
+        i = i.lower()
+        if i in cache_buffer:
+            answer+=1
+            cache_buffer.remove(i)
+        else:
+            answer+=5
+        cache_buffer.append(i)
+    return answer
