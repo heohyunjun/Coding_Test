@@ -28,3 +28,25 @@
 합집합은 {FR, RA, AN, NC, CE, RE, EN, CH}가 되므로,
 두 문자열 사이의 자카드 유사도 J("FRANCE", "FRENCH")
 '''
+
+from collections import Counter
+def solution(str1, str2):
+    str1, str2 = str1.lower(), str2.lower()
+    str1_list, str2_list = [], []
+
+    for idx in range(len(str1) -1):
+        if str1[idx :idx+2].isalpha():
+            str1_list.append(str1[idx :idx+2])
+
+    for idx in range(len(str2) -1):
+        if str2[idx :idx+2].isalpha():
+            str2_list.append(str2[idx :idx+2])
+
+    cnt1, cnt2 = Counter(str1_list), Counter(str2_list)
+
+    intersaction_ = list((cnt1 & cnt2).elements())
+    union_ = list((cnt1 | cnt2).elements())
+    if len(intersaction_) == 0and len(union_)  == 0:
+        return 65536
+    else:
+        return int(len(intersaction_)/len(union_) * 65536)
