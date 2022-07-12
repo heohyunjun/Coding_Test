@@ -17,3 +17,20 @@
 
 
 """
+import math
+def solution(begin, end):
+    result = []
+
+    for i in range(begin, end+1):
+        if i < 2:
+            result.append(0)
+        else:
+          # 제곱근해서 -> int로 변환해서 하는 것보다 
+          # 개인적으로 해당 숫자의 절반 i//2까지만 탐색하는게 더 효율적인것 같음
+            for j in range(2, int(math.sqrt(i))+1):
+                if i%j ==0 and i//j <=10000000:
+                    result.append(i//j)
+                    break
+            else:
+                result.append(1)
+    return result
