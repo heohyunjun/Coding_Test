@@ -15,3 +15,54 @@
   4-4. u의 첫 번째와 마지막 문자를 제거하고, 나머지 문자열의 괄호 방향을 뒤집어서 뒤에 붙입니다.
   4-5. 생성된 문자열을 반환합니다.
 '''
+def solution(p):
+    answer = ''
+    if correct(p):
+        return p
+    answer = change(p)
+    return answer
+
+def separate(p):
+    l, r = 0, 0
+    for idx in range(len(p)):
+        if p[idx] =='(':
+            l+=1
+        else:
+            r+=1
+        if l==r:
+            u = p[:idx+1]
+            v = p[idx+1:] if idx+1 < len(p) else ""
+            break
+    return u, v
+
+def correct(p):
+    stack = []
+    for char in p:
+        if char =='(':
+            stack.append(char)
+        else:
+            if not len(stack):
+                return False
+            elif stack[-1] == '(':
+                stack.pop()
+    return False if len(stack) else True
+
+def change(p):
+    result = ""
+    if not len(p):
+        return ""
+    u, v = separate(p)
+    if correct(u):
+        result =  u+change(v)
+    else:
+        tmp ='('
+        tmp += change(v)
+        tmp+=')'
+        u =u[1:-1]
+        for char in u:
+            if char =='(':
+                tmp+=')'
+            else:
+                tmp+='('
+        result +=tmp
+    return result
