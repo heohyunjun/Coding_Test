@@ -8,3 +8,13 @@
 아이언 슈트 구매자가 이동하려는 거리 N이 주어졌을 때,
 사용해야 하는 건전지 사용량의 최솟값을 return
 '''
+
+def solution(n):
+    ans = 1
+    while n!=1:
+        if n%2==0:
+            n/=2
+        else:
+            ans+=1
+            n-=1
+    return ans
