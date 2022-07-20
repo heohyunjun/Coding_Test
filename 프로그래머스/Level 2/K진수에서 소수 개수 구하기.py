@@ -9,3 +9,26 @@
 정수 n과 k가 매개변수로 주어집니다.
 n을 k진수로 바꿨을 때, 변환된 수 안에서 찾을 수 있는 위 조건에 맞는 소수의 개수를 return
 '''
+import math
+def is_prime(num):
+    if num==1:
+        return False
+    for i in range(2, int(math.sqrt(num))+1):
+        if num%i==0:
+            return False
+    return True
+
+def change(n, k):
+    ret = ''
+    while n>0:
+        n, mod = divmod(n, k)
+        ret+=str(mod)
+    return ret[::-1]
+
+def solution(n, k):
+    answer = 0
+    change_num = change(n, k)
+    for i in change_num.split('0'):
+        if i.isdigit() and is_prime(int(i)):
+            answer+=1
+    return answer
