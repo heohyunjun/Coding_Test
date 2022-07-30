@@ -8,3 +8,6 @@ A가 B보다 실력이 좋으면, A가 항상 이김
 경기 결과를 담은 2차원 배열 results가 매개 변수로 주어질 떄,
 정확하게 순위를 매길 수 있는 선수의 수를 return
 '''
+def solution():
+    answer = 0
+    return answer
