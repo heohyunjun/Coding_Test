@@ -8,6 +8,23 @@ A가 B보다 실력이 좋으면, A가 항상 이김
 경기 결과를 담은 2차원 배열 results가 매개 변수로 주어질 떄,
 정확하게 순위를 매길 수 있는 선수의 수를 return
 '''
-def solution():
-    answer = 0
+from collections import defaultdict
+def solution(n, results):
+    answer=0
+    winner = defaultdict(set)
+    loser  = defaultdict(set)
+
+    for win, lose in results:
+        winner[lose].add(win)
+        loser[win].add(lose)
+
+    for i in range(1, n+1):
+        for win in winner[i]:
+            loser[win].update(loser[i])
+        for lose in loser[i]:
+            winner[lose].update(winner[i])
+    for i in range(1, n+1):
+        if len(winner[i]) +len(loser[i]) == n-1:
+            answer+=1
+
     return answer
