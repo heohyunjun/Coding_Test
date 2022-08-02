@@ -18,3 +18,24 @@
 
 10~15는 A~F로
 '''
+
+def change_n(num, n):
+    ret = ''
+    if num == 0:
+        return 0
+    while num>0:
+        num, mod = divmod(num, n)
+        ret+=str(info[mod])
+    return "".join(list(reversed(ret)))
+
+info = []
+for i in range(16):
+    if i > 9: info.append(chr(i+55))
+    else: info.append(str(i))
+
+def solution(n, t, m, p):
+    answer = '0'
+    for i in range(1, t*m):
+        answer+=change_n(i, n)
+
+    return answer[p-1 : t*m : m]
