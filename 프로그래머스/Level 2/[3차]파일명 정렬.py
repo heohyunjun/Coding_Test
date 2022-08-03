@@ -20,3 +20,22 @@ MUZI와 muzi, MuZi는 정렬 시에 같은 순서로 취급된다.
 원래 입력에 주어진 순서를 유지한다. MUZI01.zip과 muzi1.png가 입력으로 들어오면,
 정렬 후에도 입력 시 주어진 두 파일의 순서가 바뀌어서는 안 된다.
 '''
+def solution(files):
+    answer = []
+    idx = 0
+    for file_ in files:
+        head, number = "", ""
+        check = False
+
+        for s in file_:
+            if s.isdigit() and len(number) < 5:
+                number +=str(s)
+                check =True
+            elif not check:
+                head+=s.lower()
+            else:
+                break
+        answer.append([head, int(number), idx, file_])
+        idx+=1
+    answer.sort()
+    return [answer[i][3] for i in range(len(answer))]
