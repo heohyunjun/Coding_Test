@@ -9,3 +9,19 @@
 노래 재생 횟수를 나타내는 plays 배열
 베스트 앨범에 들어갈 노래의 고유 번호 순서대로 return
 """
+from collections import defaultdict
+
+
+def solution(genres, plays):
+    dict_i_pg = defaultdict(list)
+    dict_sum = dict.fromkeys(genres, 0)
+    answer = []
+
+    for i, (g, p) in enumerate(zip(genres, plays)):
+        dict_i_pg[g].append((i, p))
+        dict_sum[g] += p
+    for (g, _) in sorted(dict_sum.items(), key=lambda x: x[1], reverse=True):
+        for (i, p) in sorted(dict_i_pg[g], key=lambda x: x[1], reverse=True)[:2]:
+            answer.append(i)
+
+    return answer
