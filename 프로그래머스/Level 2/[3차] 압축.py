@@ -11,3 +11,19 @@ LZM 압축과정
 
 
 '''
+def solution(msg):
+    alp = {chr(i+64) : i for i in range(1, 27)}
+    idx = len(alp) + 1
+    start, end = 0, 1
+    answer = []
+    while end < len(msg) + 1:
+        s = msg[start:end]
+        if s in alp:
+            end+=1
+        else:
+            answer.append(alp[s[:-1]])
+            start = end-1
+            alp[s] = idx
+            idx+=1
+    answer.append(alp[s])
+    return answer
