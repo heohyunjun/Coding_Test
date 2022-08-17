@@ -7,3 +7,13 @@
 { 1, 8 }, { 2, 7 }, { 3, 6 }, { 4, 5 }중 원소의 곱이 최대인건 4, 5
 
 '''
+def solution(n, s):
+    if n > s:
+        return [-1]
+    q, r = divmod(s, n)
+    answer = [q] * n
+    for i in range(r):
+        answer[i]+=1
+
+
+    return sorted(answer)
