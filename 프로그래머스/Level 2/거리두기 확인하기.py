@@ -44,3 +44,42 @@ def solution(places):
     for place in places:
         answer.append(bfs(place))
     return answer
+
+
+"##########################################"
+def bfs(place):
+    start = []
+    dx = [1, -1 , 0, 0]
+    dy = [0 , 0, 1, -1]
+
+
+    for row in range(5):
+        for col in range(5):
+            if place[row][col] == 'P':
+                start.append([row, col])
+
+    for s in start:
+        q = deque([s])
+        visited = [[0]*5 for _ in range(5)]
+        distance= [[0]*5 for _ in range(5)]
+        visited[s[0]][s[1]]=1
+
+        while q:
+            y, x = q.popleft()
+            for i in range(4):
+                nx = x+dx[i]
+                ny = y+dy[i]
+                if 0<=nx<5 and 0<=ny<5 and visited[ny][nx]==0:
+                    if place[ny][nx]=='O':
+                        q.append([ny, nx])
+                        distance[ny][nx] = distance[y][x] +1
+                        visited[ny][nx]=1
+                    if place[ny][nx] =='P' and distance[y][x]<=1:
+                        return 0
+    return 1
+
+def solution(places):
+    answer = []
+    for place in places:
+        answer.append(bfs(place))
+    return answer
